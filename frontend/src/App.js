@@ -9,7 +9,7 @@ function App() {
 
   useEffect(() => {
     const getData = async () => {
-      const response = await axios("http://localhost:5000/api");
+      const response = await axios.get("http://localhost:5000/api");
       const data = response.data.photos.photo;
       setBackendData(data);
     }
