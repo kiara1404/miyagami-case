@@ -1,19 +1,17 @@
 import express from 'express';
 import Flickr from 'flickr-sdk';
-import 'dotenv';
+import 'dotenv/config'
 
 
 const flickr = new Flickr('c274e2f7d9f965e5f625fb9aa45d02a8')
 const app = express();
 const port = process.env.PORT || 5000
 
-
-
 app.get('/api', async (req, res) => {
 
     try {
         const response = await flickr.photos.search({
-            text: "flower",
+            text: "macro",
             per_page: 16
         });
         res.json(response.body)

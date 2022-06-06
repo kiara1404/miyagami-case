@@ -1,6 +1,7 @@
 import './App.css';
 import React, { useState, useEffect } from 'react';
-import axios from 'axios'
+import axios from 'axios';
+import Search from './Search'
 
 function App() {
 
@@ -18,8 +19,9 @@ function App() {
   }, [])
 
   return (
+
     <div className="App">
-      <h1> TEST </h1>
+      <Search></Search>
       <section className="container">
         {(typeof backendData === 'undefined') ? (
           <p>Loading photo's</p>
@@ -29,7 +31,7 @@ function App() {
             <img
               // https://www.fdivckr.com/services/api/misc.urls.html
               
-              src={`https://live.staticflickr.com/${photo.server}/${photo.id}_${photo.secret}_q.jpg`}
+              src={`https://live.staticflickr.com/${photo.server}/${photo.id}_${photo.secret}_z.jpg`}
               alt={`${photo.title}`
               }
             />

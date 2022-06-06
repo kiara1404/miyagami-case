@@ -1,0 +1,28 @@
+form{
+    width: 80%;
+    margin: 2em auto;
+}
+form div{
+    display: flex;
+    justify-content: center;
+}
+
+input[type="text"]{
+    height: 3em;
+    width: 70%;
+    font-size: 18px;
+}
+input[type="text"]::placeholder{
+    font-style: italic;
+    padding: 10px;
+}
+
+button{
+    width: 30%;
+    height: 3em;
+    background-color: #0063DC;
+    border: none;
+    color: #fff;
+    font-size: 18px;
+    padding: 0;
+}
