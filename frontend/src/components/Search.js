@@ -6,23 +6,22 @@ function Search() {
     const [query, setQuery] = useState('');
 
     const handleSubmit = (e) => {
-        console.log('A query was submitted: ' + query);
         e.preventDefault();
-    }
-
-    const handleChange = (e) => {
-        setQuery(e.target.value);
-    }
-
+        setQuery(e.target[0].value);
+        console.log(e.target[0].value)
+        console.log(query)
+    };
 
 
     const sendQuery = async () => {
-        await axios.post("http://localhost:5000/api/search", {
+        await axios.post(`http://localhost:5000/api`, {
             query: query
         });
-        console.log('test', query)
+
+
     };
     sendQuery();
+    
 
 
 
@@ -35,8 +34,7 @@ function Search() {
                         type="text"
                         name="search"
                         placeholder="Type something you want to see"
-                        onChange={(e) => handleChange(e)}
-                        value={query}
+
                     />
                     <button type="submit">Search photo's</button>
                 </div>

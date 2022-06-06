@@ -13,6 +13,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(cors());
 
+
 // index
 app.get('/api', async (req, res) => {
 
@@ -29,15 +30,33 @@ app.get('/api', async (req, res) => {
 });
 
 // search
-app.post("/api/search", async (req, res) => {
-    let query = req.body.query
-        // const response =
-        //     await flickr.photos
-        //         .search({
-        //             text: query,
-        //             per_page: 16
-        //         });
-        // res.send(response.body)
+app.post("/api", async (req, res) => {
+    console.log(req.body.query)
+    if (req.body.query !== '') {
+        const response =
+            await flickr.photos
+                .search({
+                    text: req.body.query,
+                    per_page: 16
+                });
+        res.send(response.body)
+       // console.log(response.body.photos.photo)
+
+    } else {
+        const response =
+            await flickr.photos
+                .search({
+                    text: 'macro',
+                    per_page: 16
+                });
+        res.send(response.body)
+       // console.log(response.body.photos.photo)
+
+    }
+
+
+
+
 
 });
 

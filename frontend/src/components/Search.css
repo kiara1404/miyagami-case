@@ -1,6 +1,7 @@
 form{
     width: 80%;
     margin: 2em auto;
+    font-family: Arial, Helvetica, sans-serif;
 }
 form div{
     display: flex;
