@@ -1,5 +1,6 @@
 # Flickr Photo's
-<img src="gif.gif alt="" width="800px">
+<img src="gif.gif" alt="" width="800px">
+
 ## Description ✏️
 With this application you can search photo's with the Flickr API. 
 
