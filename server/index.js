@@ -5,14 +5,13 @@ import cors from "cors";
 
 
 
-const flickr = new Flickr('c274e2f7d9f965e5f625fb9aa45d02a8');
+const flickr = new Flickr(process.env.FLICK_API_KEY);
 const app = express();
 const port = process.env.PORT || 5000
 
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
-app.use(express.static(path.resolve(__dirname, "./client/build")));
 app.use(cors());
 
 let searchQuery = 'macro';
