@@ -1,63 +1,49 @@
 import express from 'express';
 import Flickr from 'flickr-sdk';
 import 'dotenv/config'
+import cors from "cors";
 
 
 
 const flickr = new Flickr('c274e2f7d9f965e5f625fb9aa45d02a8')
 const app = express();
 const port = process.env.PORT || 5000
-import cors from "cors";
+
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(cors());
 
+let searchQuery = 'macro';
 
 // index
 app.get('/api', async (req, res) => {
 
-    try {
-        const response = await flickr.photos.search({
-            text: "macro",
+    const response =
+        await flickr.photos.search({
+            text: searchQuery,
             per_page: 16
-        });
-        res.send(response.body)
-        //  console.log(response.body.photos.photo)
-    } catch (err) {
-        console.log(err);
-    }
+        })
+    res.send(response.body)
+    console.log(response.body)
 });
+
+
 
 // search
 app.post("/api", async (req, res) => {
-    console.log(req.body.query)
-    if (req.body.query !== '') {
-        const response =
-            await flickr.photos
-                .search({
-                    text: req.body.query,
-                    per_page: 16
-                });
-        res.send(response.body)
-       // console.log(response.body.photos.photo)
+    if (req.body.query) {
+        searchQuery = req.body.query;
+        const response = 
 
-    } else {
-        const response =
-            await flickr.photos
-                .search({
-                    text: 'macro',
-                    per_page: 16
-                });
+        await flickr.photos
+            .search({
+                text: searchQuery,
+                per_page: 1
+            });
         res.send(response.body)
-       // console.log(response.body.photos.photo)
-
+        console.log(response.body.photos.photo)
     }
-
-
-
-
-
 });
 
 // server
