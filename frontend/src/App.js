@@ -1,8 +1,6 @@
 import React from "react";
-
-
-import Search from './components/Search'
-import PhotoGrid from './components/PhotoGrid'
+import Search from './components/Search';
+import PhotoGrid from './components/PhotoGrid';
 
 function App() {
     return (

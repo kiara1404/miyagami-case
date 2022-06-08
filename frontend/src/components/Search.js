@@ -6,10 +6,8 @@ function Search() {
     const [query, setQuery] = useState('');
 
     const handleSubmit = (e) => {
-        e.preventDefault();
         setQuery(e.target[0].value);
-        console.log(e.target[0].value)
-        console.log(query)
+
     };
 
 
@@ -17,11 +15,11 @@ function Search() {
         await axios.post(`http://localhost:5000/api`, {
             query: query
         });
-
-
     };
     sendQuery();
+
     
+
 
 
 

@@ -5,13 +5,14 @@ import cors from "cors";
 
 
 
-const flickr = new Flickr('c274e2f7d9f965e5f625fb9aa45d02a8')
+const flickr = new Flickr('c274e2f7d9f965e5f625fb9aa45d02a8');
 const app = express();
 const port = process.env.PORT || 5000
 
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
+app.use(express.static(path.resolve(__dirname, "./client/build")));
 app.use(cors());
 
 let searchQuery = 'macro';
@@ -23,9 +24,8 @@ app.get('/api', async (req, res) => {
         await flickr.photos.search({
             text: searchQuery,
             per_page: 16
-        })
-    res.send(response.body)
-    console.log(response.body)
+        });
+    res.send(response.body);
 });
 
 
@@ -34,19 +34,17 @@ app.get('/api', async (req, res) => {
 app.post("/api", async (req, res) => {
     if (req.body.query) {
         searchQuery = req.body.query;
-        const response = 
+        const response =
 
-        await flickr.photos
-            .search({
-                text: searchQuery,
-                per_page: 1
-            });
-        res.send(response.body)
-        console.log(response.body.photos.photo)
+            await flickr.photos
+                .search({
+                    text: searchQuery,
+                    per_page: 1
+                });
+        res.send(response.body);
     }
 });
 
 // server
 app.listen(port, () =>
-    console.log(`Server is running succesfully👋!`),
-);
+    console.log(`Server is running succesfully👋!`));
