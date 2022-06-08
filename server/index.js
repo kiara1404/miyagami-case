@@ -5,7 +5,7 @@ import cors from "cors";
 
 
 
-const flickr = new Flickr(process.env.FLICK_API_KEY);
+const flickr = new Flickr('c274e2f7d9f965e5f625fb9aa45d02a8');
 const app = express();
 const port = process.env.PORT || 5000
 
