@@ -1,11 +1,12 @@
 # Flickr Photo's
-
+<img src="gif.gif alt="" width="800px">
 ## Description ✏️
 With this application you can search photo's with the Flickr API. 
 
 ## Tech Stack 👩🏻‍💻
 This application is made with
 * Flickr API
+* Node
 * Express
 * React
 
